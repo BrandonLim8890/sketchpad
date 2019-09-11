@@ -17,10 +17,15 @@
         const container = document.querySelector('.container');
         const clear_button = document.createElement('button');
         const rgb_button = document.createElement('button');
+        const normal_button = document.createElement('button');
+        var rgb = false;
 
         rgb_button.classList.add('button');
         rgb_button.setAttribute('id', 'rgb_button');
         rgb_button.textContent = 'RGB Mode';
+        normal_button.classList.add('button');
+        normal_button.setAttribute('id', 'normal_button');
+        normal_button.textContent = 'Normal Mode';
         clear_button.classList.add('button');
         clear_button.setAttribute('id', 'clear_button');
         clear_button.textContent = 'Clear Grid';
@@ -35,11 +40,12 @@
 
         document.body.insertBefore(clear_button, container);
 
-        rgb_button.addEventListener('click', (e) => {
-            
-        })
+        rgb_button.addEventListener('click', (e) => {rgb = true});
+
+        normal_button.addEventListener('click', (e) => {rgb = false});
 
         document.body.insertBefore(rgb_button, clear_button);
+        document.body.insertBefore(normal_button, rgb_button);
 
         function setGrid(grid_size) {
             for (let row = 0; row < grid_size; row++) {
@@ -53,7 +59,14 @@
             }
             divs.forEach((div) => {
                 div.addEventListener('mouseover', (e) => {
-                    e.target.classList.add('hover');
+                    if (rgb) {
+                        let r = Math.floor(Math.random() * 255) + 1;
+                        let g = Math.floor(Math.random() * 255) + 1;
+                        let b = Math.floor(Math.random() * 255) + 1;
+                        div.style.background = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+                    } else {
+                        div.classList.add('hover');
+                    }
                 });
             });
         }

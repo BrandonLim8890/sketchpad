@@ -17,8 +17,8 @@ html, body {
 .box {
     width: 100%;
     height: 100%;
-    background: black;
     transition: all .1s ease;
+    background: black;
 }
 
 #clear_button {
@@ -26,7 +26,11 @@ html, body {
 }
 
 #rgb_button {
-    right: 100px;
+    right: 125px;
+}
+
+#normal_button {
+    right: 250px;
 }
 
 .button {
@@ -35,10 +39,10 @@ html, body {
     margin-top: 7px;
     margin-right: 7px;
     height: 30px;
-    width: 75px;
+    width: 100px;
     border: solid 1px grey;
 }
 
 .hover {
-    background: blue;
+    background: white !important;
 }
